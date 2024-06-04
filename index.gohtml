@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+</head>
+<body>
+    <h1>Movie Search</h1>
+    <form action="/search" method="get">
+        <input type="text" name="title" placeholder="Enter movie name">
+        <button type="submit">Search</button>
+    </form>
+    <div id="searchResults">
+        {{if .Results}}
+            {{range .Results}}
+                <div>
+                    <h2>{{.Title}}</h2>
+                    <p>Year: {{.Year}}</p>
+                    <p>Genre: {{.Genre}}</p>
+                    <img src="{{.BannerImage}}" alt="{{.Title}}">
+                </div>
+            {{else}}
+                <p>No results found</p>
+            {{end}}
+        {{end}}
+    </div>
+</body>
+</html>
