@@ -35,6 +35,7 @@ func main() {
 	}
 
 	// Define your HTTP handlers
+	// http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/api/movies", getMovies)
 	http.HandleFunc("/api/movies/search", searchMovies)
 
@@ -52,8 +53,22 @@ func getMovies(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(moviesData)
 }
 
-// Handler for /api/movies/search
+// // Handler for the home page
+// func homeHandler(w http.ResponseWriter, r *http.Request) {
+// 	// Render the home page template
+// 	tmpl, err := template.ParseFiles("index.html")
+// 	if err != nil {
+// 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+// 		return
+// 	}
+// 	if err := tmpl.Execute(w, nil); err != nil {
+// 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+// 	}
+// }
+
+// // Handler for /api/movies/search
 func searchMovies(w http.ResponseWriter, r *http.Request) {
+
 	// Extract the query parameters
 	title := r.URL.Query().Get("title")
 	genre := r.URL.Query().Get("genre")
