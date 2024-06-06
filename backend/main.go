@@ -7,13 +7,15 @@ import (
 	"log"
 	"net/http"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 // Movie struct to represent a movie object
 type Movie struct {
 	ID          int    `json:"id"`
 	Title       string `json:"title"`
-	Year        int    `json:"year"`
+	Year        string    `json:"year"`
 	Genre       string `json:"genre"`
 	BannerImage string `json:"banner_image"`
 }
@@ -34,44 +36,31 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Define your HTTP handlers
-	// http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/api/movies", getMovies)
-	http.HandleFunc("/api/movies/search", searchMovies)
+	// Create a new Gin router
+	router := gin.Default()
 
-	err = http.ListenAndServe(":8080", nil)
-	if err != nil {
+	// Define your HTTP handlers
+	router.GET("/api/movies", getMovies)
+	router.GET("/api/movies/search", searchMovies)
+
+	// Start the Gin server
+	if err := router.Run(":8080"); err != nil {
 		log.Fatal("Server failed to start: ", err)
 	}
 	fmt.Println("Server started")
 }
 
 // Handler for /api/movies
-func getMovies(w http.ResponseWriter, r *http.Request) {
+func getMovies(c *gin.Context) {
 	// Encode moviesData as JSON and write to response
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(moviesData)
+	c.JSON(http.StatusOK, moviesData)
 }
 
-// // Handler for the home page
-// func homeHandler(w http.ResponseWriter, r *http.Request) {
-// 	// Render the home page template
-// 	tmpl, err := template.ParseFiles("index.html")
-// 	if err != nil {
-// 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-// 		return
-// 	}
-// 	if err := tmpl.Execute(w, nil); err != nil {
-// 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-// 	}
-// }
-
-// // Handler for /api/movies/search
-func searchMovies(w http.ResponseWriter, r *http.Request) {
-
+// Handler for /api/movies/search
+func searchMovies(c *gin.Context) {
 	// Extract the query parameters
-	title := r.URL.Query().Get("title")
-	genre := r.URL.Query().Get("genre")
+	title := c.Query("title")
+	genre := c.Query("genre")
 
 	// Log the received search parameters
 	fmt.Printf("Received search parameters: title=%s, genre=%s\n", title, genre)
@@ -89,6 +78,5 @@ func searchMovies(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("Search results: %v\n", searchResults)
 
 	// Encode searchResults as JSON and write to response
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(searchResults)
+	c.JSON(http.StatusOK, searchResults)
 }
