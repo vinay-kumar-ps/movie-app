@@ -1,0 +1,33 @@
+.movie-list-container {
+  text-align: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  overflow-x: auto; /* Enable horizontal scrolling if the content exceeds the container width */
+}
+
+.movie-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.movie-list li img {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.movie-list li .details {
+  flex-grow: 1;
+}
+
+.movie-list li h2 {
+  margin: 0;
+}
+
+.movie-list li p {
+  margin: 0;
+  color: #555;
+}

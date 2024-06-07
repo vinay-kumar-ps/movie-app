@@ -1,5 +1,6 @@
 // src/components/MovieList.js
 import React, { useEffect, useState } from 'react';
+import './MovieList.css';  // Import the CSS file
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
@@ -12,11 +13,11 @@ const MovieList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="movie-list-container">
       <h1>Movie List</h1>
-      <ul>
+      <ul className="movie-list">
         {movies.map(movie => (
-          <li key={movie.id}>
+          <li key={movie.id} className="movie-item">
             <img src={movie.banner_image} alt={movie.title} />
             <p>{movie.title} ({movie.year}) - {movie.genre}</p>
           </li>

@@ -1,39 +1,14 @@
 [
-  {
-    "id": 1,
-    "title": "Beetlejuice",
-    "year": "1988",
-    "genre": "Comedy",
-    "banner_image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg"
-  },
-  {
+{
     "id": 2,
     "title": "The Cotton Club",
     "year": "1984",
     "genre": "Crime",
     "banner_image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg"
   },
-  {
-    "id": 3,
-    "title": "The Shawshank Redemption",
-    "year": "1994",
-    "genre": "Crime",
-    "banner_image": "https://images-na.ssl-images-amazon.com/images/M/MV5BODU4MjU4NjIwNl5BMl5BanBnXkFtZTgwMDU2MjEyMDE@._V1_SX300.jpg"
-  },
-  {
-    "id": 4,
-    "title": "Crocodile Dundee",
-    "year": "1986",
-    "genre": "Adventure",
-    "banner_image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg0MTU1MTg4NF5BMl5BanBnXkFtZTgwMDgzNzYxMTE@._V1_SX300.jpg"
-  },
-  {
-    "id": 5,
-    "title": "Valkyrie",
-    "year": "2008",
-    "genre": "Drama",
-    "banner_image": "http://ia.media-imdb.com/images/M/MV5BMTg3Njc2ODEyN15BMl5BanBnXkFtZTcwNTAwMzc3NA@@._V1_SX300.jpg"
-  },
+
+  
+ 
   {
     "id": 6,
     "title": "Ratatouille",
