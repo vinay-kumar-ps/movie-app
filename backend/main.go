@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/gin-contrib/cors"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -38,6 +40,8 @@ func main() {
 
 	// Create a new Gin router
 	router := gin.Default()
+
+	router.Use(cors.Default())
 
 	// Define your HTTP handlers
 	router.GET("/", homeHandler)
