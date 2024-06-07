@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -41,25 +40,24 @@ func main() {
 	router := gin.Default()
 
 	// Define your HTTP handlers
+	router.GET("/", homeHandler)
 	router.GET("/api/movies", getMovies)
 	router.GET("/api/movies/search", searchMovies)
 
-	// Get the port from the environment variable (used by Render)
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080" // Default port if not specified
-	}
-
 	// Start the Gin server
-	if err := router.Run(":" + port); err != nil {
+	if err := router.Run(); err != nil {
 		log.Fatal("Server failed to start: ", err)
 	}
-	fmt.Println("Server started on port", port)
+	fmt.Println("Server started")
+}
+
+// Handler for the root route
+func homeHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "Welcome to the Movie API!"})
 }
 
 // Handler for /api/movies
 func getMovies(c *gin.Context) {
-	// Encode moviesData as JSON and write to response
 	c.JSON(http.StatusOK, moviesData)
 }
 
