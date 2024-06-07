@@ -13,7 +13,7 @@ This is a simple web application for searching movies using an API created in Go
 
 ## Technologies Used
 
-_Golang for Backend
+  -Golang for Backend Api
 - JavaScript (React.js)just searching and viewing  features available not a fully functional website
 - External Movie API (provide the API name if available)
 
