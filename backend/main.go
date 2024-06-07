@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -15,7 +16,7 @@ import (
 type Movie struct {
 	ID          int    `json:"id"`
 	Title       string `json:"title"`
-	Year        string    `json:"year"`
+	Year        string `json:"year"`
 	Genre       string `json:"genre"`
 	BannerImage string `json:"banner_image"`
 }
@@ -43,11 +44,17 @@ func main() {
 	router.GET("/api/movies", getMovies)
 	router.GET("/api/movies/search", searchMovies)
 
+	// Get the port from the environment variable (used by Render)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default port if not specified
+	}
+
 	// Start the Gin server
-	if err := router.Run(":8080"); err != nil {
+	if err := router.Run(":" + port); err != nil {
 		log.Fatal("Server failed to start: ", err)
 	}
-	fmt.Println("Server started")
+	fmt.Println("Server started on port", port)
 }
 
 // Handler for /api/movies
