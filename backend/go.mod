@@ -1,4 +1,4 @@
-module movies-app
+module github.com/vinay-kumar-ps/movie-app
 
 go 1.22.0
 
